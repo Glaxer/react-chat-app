@@ -1,0 +1,51 @@
+//@import '../node_modules/bootstrap/scss/bootstrap';
+//@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap');
+
+$purple: #59359a;
+
+div.vertical-container {
+    height: 100vh;
+    color: white;
+    background-color: $purple;
+    display: flex;
+    flex-direction: column;
+}
+
+div.vertical-container-inner {
+    margin: auto 0;
+    flex: initial; 
+    padding: 5rem;
+}
+
+img.welcome-icon {
+    display: block;
+    height: 170px;
+    margin: 0 auto 3rem;
+}
+
+h2 {
+    // font-family: 'Open Sans', sans-serif;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    // font-weight: 800;
+    text-transform: uppercase;
+}
+
+.btn-white {
+    background-color: #f0f0f0;
+    color: #333333;
+    border: none;
+}
+
+.btn-white:hover {
+    background-color: #ffffff;
+    color: #333333;
+}
+
+/* a.white-link {
+    color: #c4c4c4
+}
+
+a.white-link:hover {
+    color: white;
+} */
+

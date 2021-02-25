@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="193" height="193" viewBox="0 0 193 193">
+  <g id="Group_17" data-name="Group 17" transform="translate(-1417 -278)">
+    <g id="Ellipse_104" data-name="Ellipse 104" transform="translate(1417 278)" fill="#fff" stroke="#707070" stroke-width="1">
+      <circle cx="96.5" cy="96.5" r="96.5" stroke="none"/>
+      <circle cx="96.5" cy="96.5" r="96" fill="none"/>
+    </g>
+    <g id="Group_16" data-name="Group 16" transform="translate(1438.01 304.115)">
+      <ellipse id="Ellipse_1" data-name="Ellipse 1" cx="24.587" cy="7.719" rx="24.587" ry="7.719" transform="translate(101.427 66.5) rotate(-69.082)" fill="#2f2e41"/>
+      <ellipse id="Ellipse_21" data-name="Ellipse 21" cx="49.174" cy="49.174" rx="49.174" ry="49.174" transform="translate(22.792 22.618)" fill="#2f2e41"/>
+      <rect id="Rectangle_9" data-name="Rectangle 9" width="14.939" height="26.765" transform="translate(54.394 110.384)" fill="#2f2e41"/>
+      <rect id="Rectangle_10" data-name="Rectangle 10" width="14.939" height="26.765" transform="translate(82.174 110.384)" fill="#2f2e41"/>
+      <ellipse id="Ellipse_22" data-name="Ellipse 22" cx="12.449" cy="4.668" rx="12.449" ry="4.668" transform="translate(54.046 132.792)" fill="#2f2e41"/>
+      <ellipse id="Ellipse_23" data-name="Ellipse 23" cx="12.449" cy="4.668" rx="12.449" ry="4.668" transform="translate(81.648 132.169)" fill="#2f2e41"/>
+      <ellipse id="Ellipse_24" data-name="Ellipse 24" cx="16.806" cy="16.806" rx="16.806" ry="16.806" transform="translate(59.973 50.569)" fill="#fff"/>
+      <ellipse id="Ellipse_25" data-name="Ellipse 25" cx="5.602" cy="5.602" rx="5.602" ry="5.602" transform="translate(71.331 61.694)" fill="#3f3d56"/>
+      <path id="Path_6" data-name="Path 6" d="M98.774,404.755c-3.971-17.782,8.722-35.75,28.349-40.132s38.757,6.48,42.728,24.262-9.037,24.34-28.664,28.723S102.745,422.537,98.774,404.755Z" transform="translate(-69.726 -363.652)" fill="#63ccff"/>
+      <ellipse id="Ellipse_26" data-name="Ellipse 26" cx="7.719" cy="24.587" rx="7.719" ry="24.587" transform="translate(0 54.728) rotate(-64.626)" fill="#2f2e41"/>
+      <path id="Path_7" data-name="Path 7" d="M137.043,528.035c0,4.813,12.392,14.316,26.143,14.316S189.83,528.8,189.83,523.99s-12.893.934-26.644.934S137.043,523.223,137.043,528.035Z" transform="translate(-85.956 -434.297)" fill="#fff"/>
+    </g>
+  </g>
+</svg>
