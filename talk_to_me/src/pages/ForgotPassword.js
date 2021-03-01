@@ -2,14 +2,16 @@ import React, { useRef, useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
-export default function ForgotPassword() {
+export default function ForgotPassword(props) {
   const emailRef = useRef();
   const { resetPassword } = useAuth();
   const [message, setMessage] = useState();
   const [error, setError] = useState();
   const [loading, setLoading] = useState(false);
+  const userEmail = props.location.email
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -32,13 +34,14 @@ export default function ForgotPassword() {
       <div className="vertical-container" >
         <div className="vertical-container-inner">
           <h2 className="text-center mb-4">Password Reset</h2>
-          {error && <Alert variant="danger">{error}</Alert>}
-          {message && <Alert variant="success">{message}</Alert>}
+          
 
-          <Form onSubmit={handleSubmit}>
+          <Form onSubmit={handleSubmit} className="auth-form">
             <Form.Group id="email">
-              <Form.Label>Email</Form.Label>
-              <Form.Control type="email" ref={emailRef} required />
+              <div className="i">
+                <FontAwesomeIcon icon={['fas', 'user']} />
+              </div>
+              <Form.Control type="email" ref={emailRef} required defaultValue={userEmail} />
             </Form.Group>
 
             <Button type="submit" disabled={loading} className="w-100 btn-white">
@@ -48,6 +51,8 @@ export default function ForgotPassword() {
               <Link to="/login" className="white-link">Login</Link>
             </div>
           </Form>
+          {error && <Alert variant="danger" className="text-center mt-2">{error}</Alert>}
+          {message && <Alert variant="success" className="text-center mt-2">{message}</Alert>}
 
           <div className="w-100 text-center mt-3">
             Need an account? <Link to="/signup" className="white-link">Sign Up</Link>

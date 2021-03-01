@@ -2,9 +2,11 @@ import React, { useRef, useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 export default function Signup() {
+  // const userRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
@@ -38,27 +40,41 @@ export default function Signup() {
       <div className="vertical-container" >
         <div className="vertical-container-inner">
           <h2 className="text-center mb-4">Sign Up</h2>
-          {error && <Alert variant="danger">{error}</Alert>}
 
-          <Form onSubmit={handleSubmit}>
+          <Form onSubmit={handleSubmit} className="auth-form">
+            {/* <Form.Group id="username">
+              <div className="i">
+                <FontAwesomeIcon icon={['fas', 'user']} />
+              </div>
+              <Form.Control type="text" ref={userRef} required placeholder="Username"/>
+            </Form.Group> */}
+
             <Form.Group id="email">
-              <Form.Label>Email</Form.Label>
-              <Form.Control type="email" ref={emailRef} required />
+              <div className="i">
+                <FontAwesomeIcon icon={['fas', 'bookmark']} />
+              </div>
+              <Form.Control type="email" ref={emailRef} required placeholder="Email"/>
             </Form.Group>
 
             <Form.Group id="password">
-              <Form.Label>Password</Form.Label>
-              <Form.Control type="password" ref={passwordRef} required />
+              <div className="i">
+                <FontAwesomeIcon icon={['fas', 'lock-open']} />
+              </div>
+              <Form.Control type="password" ref={passwordRef} required placeholder="Password" />
             </Form.Group>
 
             <Form.Group id="password-confirm">
-              <Form.Label>Confirm Password</Form.Label>
-              <Form.Control type="password" ref={passwordConfirmRef} required />
+              <div className="i">
+                <FontAwesomeIcon icon={['fas', 'lock']} />
+              </div>
+              <Form.Control type="password" ref={passwordConfirmRef} required placeholder="Confirm Password" />
             </Form.Group>
 
             <Button type="submit" disabled={loading} className="w-100 btn-white">
               Sign Up
             </Button>
+
+            {error && <Alert variant="danger" className="mt-2">{error}</Alert>}
           </Form>
 
           <div className="w-100 text-center mt-2">

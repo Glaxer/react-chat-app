@@ -9,12 +9,33 @@ div.vertical-container {
     background-color: $purple;
     display: flex;
     flex-direction: column;
+
+    .vertical-container-inner {
+        margin: auto 0;
+        flex: initial; 
+        padding: 5rem;
+    }
 }
 
-div.vertical-container-inner {
-    margin: auto 0;
-    flex: initial; 
-    padding: 5rem;
+form.auth-form {
+    .form-group {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        border-bottom: 2px solid white;
+
+        input {
+            background-color: transparent;
+            color: white;
+            border: none;
+            box-shadow: none;
+            border-radius: 0;
+            -webkit-border-radius: 0;
+            -moz-border-radius: 0;
+            -ms-border-radius: 0;
+            -o-border-radius: 0;
+        }
+    }
 }
 
 img.welcome-icon {

@@ -1,8 +1,8 @@
 import React, { useRef, useState } from 'react';
-import {  Form, Button, Alert } from 'react-bootstrap';
+import { Form, Button, Alert } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function Login() {
   const emailRef = useRef();
@@ -34,15 +34,15 @@ export default function Login() {
           <img src="images/welcome-icon.svg" alt="icon" className="welcome-icon"/>
           <h2 className="text-center mb-4">Welcome</h2>
         
-          <Form onSubmit={handleSubmit}>
+          <Form onSubmit={handleSubmit} className="auth-form">
             <Form.Group id="email">
-              <Form.Label>Email</Form.Label>
-              <Form.Control type="email" ref={emailRef} required />
+              <FontAwesomeIcon icon={['fas', 'user']} />
+              <Form.Control type="email" ref={emailRef} required placeholder="Email" />
             </Form.Group>
 
             <Form.Group id="password">
-              <Form.Label>Password</Form.Label>
-              <Form.Control type="password" ref={passwordRef} required />
+              <FontAwesomeIcon icon={['fas', 'lock']} />
+              <Form.Control type="password" ref={passwordRef} required placeholder="Password" />
             </Form.Group>
 
             <Button type="submit" disabled={loading} className="w-100 btn-white">
@@ -52,10 +52,10 @@ export default function Login() {
           {error && <Alert variant="danger" className="text-center mt-2">
             {error}
             <div className="w-100 text-center ">
-              <Link to="/forgot-password" className="white-link">Forgot Password?</Link>
+              <Link to={{pathname: "/forgot-password", email: emailRef.current.value }} className="white-link">Forgot Password?</Link>
             </div>
           </Alert>}
-          <div className="w-100 text-center mt-2">
+          <div className="mt-2 text-right">
             Need an account? <Link to="/signup" className="white-link">Sign Up</Link>
           </div>
 
