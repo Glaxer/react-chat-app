@@ -11,7 +11,7 @@ export default function ForgotPassword(props) {
   const [message, setMessage] = useState();
   const [error, setError] = useState();
   const [loading, setLoading] = useState(false);
-  const userEmail = props.location.email
+  const userEmail = props.location.email;
 
   async function handleSubmit(e) {
     e.preventDefault();
