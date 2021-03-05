@@ -1,12 +1,40 @@
-//@import '../node_modules/bootstrap/scss/bootstrap';
+
 //@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap');
 
+$theme-colors: (
+    "primary": #59359a,
+    "info": #63ccff,
+);
+
+
 $purple: #59359a;
+$divider: #d6d6d6;
+
+body {
+    overflow-x: hidden;
+    background-color: #f1f1f1 !important;
+}
+
+main {
+    height: 100vh;
+}
+
+
+h2 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-transform: uppercase;
+}
+
+.row {
+    height: 100%;
+}
+
+/* --- AUTHENTICATION COMPONENTS --------------------- */
 
 div.vertical-container {
     height: 100vh;
     color: white;
-    background-color: $purple;
+    //background-color: $purple;
     display: flex;
     flex-direction: column;
 
@@ -44,29 +72,149 @@ img.welcome-icon {
     margin: 0 auto 3rem;
 }
 
-h2 {
-    // font-family: 'Open Sans', sans-serif;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    // font-weight: 800;
-    text-transform: uppercase;
+/* --- CHAT LIST -------------------------- */
+
+.right-col {
+    border-right: 1px solid $divider;
+    padding: 0 !important;
 }
 
-.btn-white {
-    background-color: #f0f0f0;
+.chat-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: calc(100% - 100px);
+    
+
+    .button-wrapper {
+        background-color: $purple;
+        height: 70px;
+
+        button {
+            height: 100%;
+            font-weight: 500;
+            border-radius: 0;
+            -webkit-border-radius: 0;
+            -moz-border-radius: 0;
+            -ms-border-radius: 0;
+            -o-border-radius: 0;
+
+            svg {
+                margin-right: 10%;
+            }
+        }
+    }
+}
+
+div.list-group {
+    padding: 0 15px !important;
+    margin-left: 15px;
+
+    div.list-group-item { 
+        display: flex;
+        align-items: center;
+        margin-top: 10px;
+        border: none;
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        &.active {
+            background-color: rgb(228, 228, 228);
+            color: #333333;
+            margin-top: 10px;
+            border: none;
+        }
+
+        &.new-message {
+            border-right: 10px solid $purple;
+        }
+    }
+}
+
+.user-img {
+    height: 70px;
+    margin-right: 10px;
+}
+
+/* --- CHAT VIEW -------------------------- */
+
+.chat-header {
+    display: flex;
+    align-items: center;
+    padding: 10px 0 20px;
+    margin-right: 40px;
+    border-bottom: 1px solid $divider;
+}
+
+.chat-content {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 202px);
+    overflow: auto;
+    overflow-y: scroll;
+    padding-right: 20px;
+    padding-bottom: 20px;
+}
+
+.message-sent {
+    clear: both;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    background-color: white;
     color: #333333;
-    border: none;
+    max-width: 70%;
+    padding: 15px 20px;
+    margin-top: 10px;
+    line-height: 1.7em;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    
+    &.user-sent {
+        align-self: flex-end;
+        border-bottom-right-radius: 0;
+    }
+
+    &.friend-sent {
+        align-self: flex-start;
+        border-bottom-left-radius: 0;
+    }
 }
 
-.btn-white:hover {
-    background-color: #ffffff;
-    color: #333333;
+/* --- CHAT SEND -------------------------- */
+
+form.send-form {
+    padding: 30px 0 20px;
+    border-top: 1px solid $divider;
+    margin-right: 40px;
+    align-items: center;
+
+    input {
+        background-color: transparent;
+        border: none;
+
+        &:focus {
+            box-shadow: none !important;
+            border-color: none !important;
+            background-color: transparent !important;
+        }
+    }
 }
 
-/* a.white-link {
-    color: #c4c4c4
+button.send-btn {
+    width: 50px;
+    height: 50px;
+    padding-right: 13px;
+    margin-left: 30px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
 }
 
-a.white-link:hover {
-    color: white;
-} */
-
+@import '~bootstrap/scss/bootstrap';

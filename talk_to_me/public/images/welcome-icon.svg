@@ -1,9 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="193" height="193" viewBox="0 0 193 193">
   <g id="Group_17" data-name="Group 17" transform="translate(-1417 -278)">
-    <g id="Ellipse_104" data-name="Ellipse 104" transform="translate(1417 278)" fill="#fff" stroke="#707070" stroke-width="1">
-      <circle cx="96.5" cy="96.5" r="96.5" stroke="none"/>
-      <circle cx="96.5" cy="96.5" r="96" fill="none"/>
-    </g>
+    <circle id="Ellipse_104" data-name="Ellipse 104" cx="96.5" cy="96.5" r="96.5" transform="translate(1417 278)" fill="#fff"/>
     <g id="Group_16" data-name="Group 16" transform="translate(1438.01 304.115)">
       <ellipse id="Ellipse_1" data-name="Ellipse 1" cx="24.587" cy="7.719" rx="24.587" ry="7.719" transform="translate(101.427 66.5) rotate(-69.082)" fill="#2f2e41"/>
       <ellipse id="Ellipse_21" data-name="Ellipse 21" cx="49.174" cy="49.174" rx="49.174" ry="49.174" transform="translate(22.792 22.618)" fill="#2f2e41"/>
