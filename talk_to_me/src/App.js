@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Dashboard from './components/Dashboard';
-import Signup from './components/Signup';
-import Login from './components/Login';
+import Dashboard from './pages/Dashboard';
+import Signup from './pages/Signup';
+import Login from './pages/Login';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Button, Row, Col } from 'react-bootstrap';
-import ChatList from './ChatList';
-import ChatView from './ChatView';
-import ChatSend from './ChatSend';
-import NewChat from './NewChat';
+import ChatList from '../components/ChatList';
+import ChatView from '../components/ChatView';
+import ChatSend from '../components/ChatSend';
+import NewChat from '../components/NewChat';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 
