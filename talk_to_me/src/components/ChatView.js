@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+// import firebase from 'firebase/app';
+// import 'firebase/firestore';
 
 class ChatView extends Component {
   componentDidUpdate = () => {
@@ -28,7 +30,7 @@ class ChatView extends Component {
             </div>
             <div className="friend-info">
               <h6>{chat.users.filter(_user => _user !== user)}</h6>
-              <p className="mb-0">Text</p>
+              <p className="mb-0">Hej</p>
             </div>
           </div>
           <section id="chatview-content" className="chat-content">
@@ -46,6 +48,40 @@ class ChatView extends Component {
       );
     }
   }
+
+  // findUserName = () => {
+  //   const { chat, user } = this.props;
+
+  //   var i = 0;
+  //   i++;
+  //   console.log("SV1: " + i);
+  //   const searchedUser = chat.users.filter(_user => _user !== user) + '';
+  //   //console.log(searchedUser)
+
+  //   var docRef = firebase.firestore().collection("users").doc(searchedUser);
+
+  //   console.log(docRef);
+
+  //   docRef.get().then((doc) => {
+  //     i++;
+
+  //     if (doc.exists) {
+  //       const foundUser = doc.data();
+  //       console.log(doc.data().userName)
+  //       return foundUser.userName;
+  //     }
+  //     else {
+  //       doc.data() // will be undefined in this case
+  //       console.log("No such document!");
+  //     }
+  //   }).catch((error) => {
+  //     console.log("Error getting document:", error);
+  //   });
+
+  //   console.log("SV2: " + i)
+  // }
+
 }
+
 
 export default ChatView;
