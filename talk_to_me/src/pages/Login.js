@@ -52,9 +52,13 @@ class Login extends Component {
             <div className="w-100 text-center mt-2">
               Don't have an account? <Link to="/signup" className="text-info">Sign Up</Link>
             </div>
+
+            <div className="w-100 text-center mt-2">
+              Did you forget your password? <Link to={{ pathname: "/forgot-password", email: this.state.email }} className="text-info">Reset Password</Link>
+            </div>
           </div>
         </div>
-      </main>
+      </main >
     );
   }
 

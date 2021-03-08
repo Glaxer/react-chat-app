@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
+import ForgotPassword from './pages/ForgotPassword'
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 
@@ -23,6 +24,7 @@ function App() {
         <Route exact path="/" component={Dashboard}></Route>
         <Route path="/login" component={Login}></Route>
         <Route path="/signup" component={Signup}></Route>
+        <Route path="/forgot-password" component={ForgotPassword}></Route>
       </Switch>
     </Router>
   )
