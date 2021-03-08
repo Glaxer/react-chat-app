@@ -6,7 +6,7 @@ class NewChat extends Component {
   constructor() {
     super();
     this.state = {
-      username: null,
+      friendEmail: null,
       message: null,
     }
   }
@@ -22,7 +22,7 @@ class NewChat extends Component {
               placeholder="Enter your friend's email"
               required
               autoFocus
-              onChange={(e) => this.userTyping('username', e)}
+              onChange={(e) => this.userTyping('friendEmail', e)}
             >
             </Form.Control>
             <Form.Control
@@ -40,8 +40,8 @@ class NewChat extends Component {
 
   userTyping = (type, e) => {
     switch (type) {
-      case 'username':
-        this.setState({ username: e.target.value });
+      case 'friendEmail':
+        this.setState({ friendEmail: e.target.value });
         break;
 
       case 'message':
@@ -64,7 +64,7 @@ class NewChat extends Component {
 
   createChat = () => {
     this.props.newChatSubmitFn({
-      sendTo: this.state.username,
+      sendTo: this.state.friendEmail,
       message: this.state.message
     });
   }
@@ -74,7 +74,7 @@ class NewChat extends Component {
   }
 
   buildDocKey = () => {
-    return [firebase.auth().currentUser.email, this.state.username].sort().join(':');
+    return [firebase.auth().currentUser.email, this.state.friendEmail].sort().join(':');
   }
 
   chatExists = async () => {
@@ -86,7 +86,7 @@ class NewChat extends Component {
 
   userExists = async () => {
     const usersSnapshot = await firebase.firestore().collection('users').get();
-    const exists = usersSnapshot.docs.map(_doc => _doc.data().email).includes(this.state.username);
+    const exists = usersSnapshot.docs.map(_doc => _doc.data().email).includes(this.state.friendEmail);
     return exists;
   }
 }
