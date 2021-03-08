@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Dashboard from './components/Dashboard';
 import Signup from './components/Signup';
@@ -22,23 +22,24 @@ firebase.initializeApp({
 
 function App() {
   return (
-      <Router>
-          <Route path="/login" component={Login}></Route>
-          <Route path="/signup" component={Signup}></Route>
-          <Route path="/dashboard" component={Dashboard}></Route> 
-      </Router>
+    <Router>
+      <Switch>
+        <Route path="/login" component={Login}></Route>
+        <Route path="/signup" component={Signup}></Route>
+        <Route path="/" component={Dashboard}></Route>
+      </Switch>
+    </Router>
 
     // <Container className="d-flex align-items-center justify-content-center" style={{ minHeight: "100vh" }}>
     //   <div className="w-100" style={{ maxWidth: "500px" }}>
     //     <Router>
     //       <AuthProvider>
-    //         <Switch>
+    //         
     //           <PrivateRoute exact path="/" component={Dashboard} />
     //           <PrivateRoute path="/update-profile" component={UpdateProfile} />
     //           <Route path="/signup" component={Signup} />
     //           <Route path="/login" component={Login} />
     //           <Route path="/forgot-password" component={ForgotPassword} />
-    //         </Switch>
     //       </AuthProvider>
     //     </Router>
     //   </div>
