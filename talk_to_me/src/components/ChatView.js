@@ -28,7 +28,7 @@ class ChatView extends Component {
             </div>
             <div className="friend-info">
               <h6>{chat.users.filter(_user => _user !== user)}</h6>
-              <p className="mb-0">Text</p>
+              <p className="mb-0">{chat.users.filter(_user => _user !== user)}</p>
             </div>
           </div>
           <section id="chatview-content" className="chat-content">
