@@ -231,4 +231,28 @@ button.send-btn {
     -o-border-radius: 50%;
 }
 
+/* --- NEW CHAT -------------------------- */
+
+div.new-chat-form {
+    h2 {
+        text-align: center;
+        margin: 20px 0 10px;
+    }
+
+    input {
+        margin: 10px auto;
+        width: 80%;
+        border-radius: 0;
+    }
+    
+    button {
+        margin-left: 10%;    
+        border-radius: 0;
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        -ms-border-radius: 0;
+        -o-border-radius: 0;
+    }   
+}
+
 @import '~bootstrap/scss/bootstrap';

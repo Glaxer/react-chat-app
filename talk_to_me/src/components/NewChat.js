@@ -14,8 +14,8 @@ class NewChat extends Component {
   render() {
     return (
       <section>
-        <div>
-          <h3>Send a message</h3>
+        <div className="new-chat-form">
+          <h2>Send a message</h2>
           <Form onSubmit={(e) => this.submitNewChat(e)}>
             <Form.Control
               type="text"

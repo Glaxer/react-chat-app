@@ -15,6 +15,7 @@ class Dashboard extends Component {
       selectedChat: null,
       newChatFormVisible: false,
       email: null,
+      userName: null,
       chats: []
     }
   }
@@ -34,6 +35,7 @@ class Dashboard extends Component {
               selectChatFn={this.selectChat}
               chats={this.state.chats}
               userEmail={this.state.email}
+              userName={this.state.userName}
               selectedChatIndex={this.state.selectedChat} >
             </ChatList>
           </Col>
@@ -62,27 +64,12 @@ class Dashboard extends Component {
   }
 
 
+  buildDocKey = (friend) => [this.state.email, friend].sort().join(':');
 
   selectChat = async (chatIndex) => {
     await this.setState({ selectedChat: chatIndex, newChatFormVisible: false });
     this.messageRead();
   }
-
-  submitMessage = (msg) => {
-    const docKey = this.buildDocKey(this.state.chats[this.state.selectedChat].users.filter(_user => _user !== this.state.email)[0]);
-    firebase.firestore().collection('chats').doc(docKey).update({
-      messages: firebase.firestore.FieldValue.arrayUnion({
-        sender: this.state.email,
-        message: msg,
-        timestamp: Date.now()
-      }),
-      receiverHasRead: false
-    });
-  }
-
-  buildDocKey = (friend) => [this.state.email, friend].sort().join(':');
-
-  newChatBtnClicked = () => this.setState({ newChatFormVisible: true, selectedChat: null });
 
   messageRead = () => {
     const docKey = this.buildDocKey(this.state.chats[this.state.selectedChat].users.filter(_user => _user !== this.state.email)[0]);
@@ -92,6 +79,8 @@ class Dashboard extends Component {
   }
 
   clickedChatWhereNotSender = (chatIndex) => this.state.chats[chatIndex].messages[this.state.chats[chatIndex].messages.length - 1].sender !== this.state.email;
+
+  newChatBtnClicked = () => this.setState({ newChatFormVisible: true, selectedChat: null });
 
   goToChat = async (docKey, msg) => {
     const usersInChat = docKey.split(':');
@@ -114,6 +103,19 @@ class Dashboard extends Component {
     this.setState({ newChatFormVisible: false });
     this.selectChat(this.state.chats.length - 1);
   }
+
+  submitMessage = (msg) => {
+    const docKey = this.buildDocKey(this.state.chats[this.state.selectedChat].users.filter(_user => _user !== this.state.email)[0]);
+    firebase.firestore().collection('chats').doc(docKey).update({
+      messages: firebase.firestore.FieldValue.arrayUnion({
+        sender: this.state.email,
+        message: msg,
+        timestamp: Date.now()
+      }),
+      receiverHasRead: false
+    });
+  }
+
 
   //Called when the component has successfully been rendered to the DOM
   componentDidMount = () => {
