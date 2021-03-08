@@ -1,12 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-
 import Dashboard from './components/Dashboard';
 import Signup from './components/Signup';
 import Login from './components/Login';
-// import ForgotPassword from './pages/ForgotPassword';
-// import UpdateProfile from './pages/UpdateProfile';
-
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 
@@ -24,27 +20,11 @@ function App() {
   return (
     <Router>
       <Switch>
+        <Route exact path="/" component={Dashboard}></Route>
         <Route path="/login" component={Login}></Route>
         <Route path="/signup" component={Signup}></Route>
-        <Route path="/" component={Dashboard}></Route>
       </Switch>
     </Router>
-
-    // <Container className="d-flex align-items-center justify-content-center" style={{ minHeight: "100vh" }}>
-    //   <div className="w-100" style={{ maxWidth: "500px" }}>
-    //     <Router>
-    //       <AuthProvider>
-    //         
-    //           <PrivateRoute exact path="/" component={Dashboard} />
-    //           <PrivateRoute path="/update-profile" component={UpdateProfile} />
-    //           <Route path="/signup" component={Signup} />
-    //           <Route path="/login" component={Login} />
-    //           <Route path="/forgot-password" component={ForgotPassword} />
-    //       </AuthProvider>
-    //     </Router>
-    //   </div>
-    //   Hello
-    // </Container>
   )
 }
 

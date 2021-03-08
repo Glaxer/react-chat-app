@@ -49,8 +49,8 @@ class Signup extends Component {
               this.state.signupError ?
                 <Alert variant="danger" className="mt-2">
                   {this.state.signupError}
-                </Alert>: 
-              null
+                </Alert> :
+                null
             }
 
             <div className="w-100 text-center mt-2">

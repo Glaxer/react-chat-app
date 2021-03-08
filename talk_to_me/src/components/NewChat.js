@@ -18,8 +18,8 @@ class NewChat extends Component {
           <h3>Send a message</h3>
           <Form onSubmit={(e) => this.submitNewChat(e)}>
             <Form.Control
-              type="text" 
-              placeholder="Enter your friend's email" 
+              type="text"
+              placeholder="Enter your friend's email"
               required
               autoFocus
               onChange={(e) => this.userTyping('username', e)}
@@ -87,9 +87,8 @@ class NewChat extends Component {
   userExists = async () => {
     const usersSnapshot = await firebase.firestore().collection('users').get();
     const exists = usersSnapshot.docs.map(_doc => _doc.data().email).includes(this.state.username);
-    //this.setState({ serverError: !exists });
     return exists;
-  } 
+  }
 }
 
 export default NewChat;

@@ -8,7 +8,7 @@ class ChatView extends Component {
       container.scrollTo(0, container.scrollHeight);
     }
   }
-  
+
   render() {
     const { chat, user } = this.props;
 
@@ -27,7 +27,7 @@ class ChatView extends Component {
               </div> */}
             </div>
             <div className="friend-info">
-              <h6>{chat.users.filter(_user => _user !== user )}</h6>
+              <h6>{chat.users.filter(_user => _user !== user)}</h6>
               <p className="mb-0">Text</p>
             </div>
           </div>
@@ -35,7 +35,7 @@ class ChatView extends Component {
             {
               chat.messages.map((_msg, _index) => {
                 return (
-                  <div key={_index} className={_msg.sender === user ? "user-sent message-sent" : "friend-sent message-sent" }>
+                  <div key={_index} className={_msg.sender === user ? "user-sent message-sent" : "friend-sent message-sent"}>
                     {_msg.message}
                   </div>
                 )
