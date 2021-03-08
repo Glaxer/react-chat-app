@@ -17,7 +17,11 @@ class Login extends Component {
 
   render() {
     return (
-      <main>
+      <main className="d-flex justify-content-center">
+        <div className="image-container col-4">
+          <img src="images/chat-image.svg" alt="icon" />
+          <h1>Talk To Me</h1>
+        </div>
         <div className="vertical-container col-4 bg-primary" >
           <div className="vertical-container-inner">
             <img src="images/welcome-icon.svg" alt="icon" className="welcome-icon"/>

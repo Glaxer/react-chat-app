@@ -31,6 +31,23 @@ h2 {
 
 /* --- AUTHENTICATION COMPONENTS --------------------- */
 
+div.image-container {
+    text-align: center;
+    align-self: center;
+    margin-right: 50px;
+
+    img {
+        width: 100%;
+    }
+
+    h1 {
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        text-transform: uppercase;
+        font-size: 5rem;
+        margin-top: 10%;
+    }
+}
+
 div.vertical-container {
     height: 100vh;
     color: white;

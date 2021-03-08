@@ -55,6 +55,17 @@ class ChatList extends Component {
       return (
         <section>
           <ListGroup></ListGroup>
+          <div className="button-wrapper">
+            <Button onClick={this.newChat} className="w-50">
+              <FontAwesomeIcon icon={['fas', 'paper-plane']} />
+              New Chat
+            </Button>
+
+            <Button onClick={this.signOut} className="w-50">
+              <FontAwesomeIcon icon={['fas', 'sign-out-alt']} />
+              Sign Out
+            </Button>
+          </div>
         </section>
       )
     }
