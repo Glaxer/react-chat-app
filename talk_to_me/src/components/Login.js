@@ -78,7 +78,7 @@ class Login extends Component {
 
     firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
       .then(() => {
-        this.props.history.push('/dashboard')
+        this.props.history.push('/')
       }, err => {
         this.setState({ loginError: 'Server Error' });
         console.log(err)

@@ -98,7 +98,7 @@ class Signup extends Component {
         };
         firebase.firestore().collection('users').doc(this.state.email).set(userObj)
           .then(() => {
-            this.props.history.push('/dashboard')
+            this.props.history.push('/')
           }, dbError => {
             console.log(dbError);
             this.setState({ signupError: 'Failed to add user' });
