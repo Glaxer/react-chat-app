@@ -9,6 +9,7 @@ class Signup extends Component {
     super();
     this.state = {
       email: null,
+      userName: null,
       password: null,
       passwordConformation: null,
       signupError: ''
@@ -30,6 +31,11 @@ class Signup extends Component {
               <Form.Group id="email">
                 <FontAwesomeIcon icon={['fas', 'bookmark']} />
                 <Form.Control required autoFocus type="email" onChange={(e) => this.userTyping('email', e)} placeholder="Email"></Form.Control>
+              </Form.Group>
+
+              <Form.Group id="userName">
+                <FontAwesomeIcon icon={['fas', 'bookmark']} />
+                <Form.Control required type="userName" onChange={(e) => this.userTyping('userName', e)} placeholder="Username"></Form.Control>
               </Form.Group>
 
               <Form.Group id="password">
@@ -70,6 +76,10 @@ class Signup extends Component {
         this.setState({ email: e.target.value });
         break;
 
+      case 'userName':
+        this.setState({ userName: e.target.value });
+        break;
+
       case 'password':
         this.setState({ password: e.target.value });
         break;
@@ -91,18 +101,20 @@ class Signup extends Component {
       return;
     }
 
-    firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
-      .then(authRes => {
-        const userObj = {
-          email: authRes.user.email
-        };
-        firebase.firestore().collection('users').doc(this.state.email).set(userObj)
-          .then(() => {
-            this.props.history.push('/')
-          }, dbError => {
-            console.log(dbError);
-            this.setState({ signupError: 'Failed to add user' });
-          })
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(this.state.email, this.state.password)
+      .then(() => {
+        firebase.firestore()
+          .collection('users')
+          .doc(this.state.email)
+          .set({ email: this.state.email, userName: this.state.userName, avatar: '' });
+      })
+      .then(() => {
+        this.props.history.push('/')
+      }, dbError => {
+        console.log(dbError);
+        this.setState({ signupError: 'Failed to add user' });
       }, authError => {
         console.log(authError);
         this.setState({ signupError: 'Failed to add user' });

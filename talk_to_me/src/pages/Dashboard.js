@@ -4,6 +4,7 @@ import ChatList from '../components/ChatList';
 import ChatView from '../components/ChatView';
 import ChatSend from '../components/ChatSend';
 import NewChat from '../components/NewChat';
+import UpdateProfile from '../components/UpdateProfile';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 
@@ -23,7 +24,10 @@ class Dashboard extends Component {
       <main>
         <Row>
           <Col xl={3} lg={4} className="right-col">
-            <Button style={{ height: '100px' }} className="w-100">{this.state.email}</Button>
+            {
+              this.state.newChatFormVisible ? <UpdateProfile></UpdateProfile> : null
+            }
+            <Button style={{ height: "100px" }} className="w-100" >{this.state.email}</Button>
             <ChatList
               history={this.props.history}
               newChatBtnFn={this.newChatBtnClicked}
