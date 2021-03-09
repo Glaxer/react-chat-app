@@ -114,12 +114,12 @@ class Signup extends Component {
 
     firebase
       .auth()
-      .createUserWithEmailAndPassword(this.state.email, this.state.password)
+      .createUserWithEmailAndPassword(this.state.email.toLowerCase(), this.state.password)
       .then(() => {
         firebase.firestore()
           .collection('users')
-          .doc(this.state.email)
-          .set({ email: this.state.email, userName: this.state.userName, address: this.state.address });
+          .doc(this.state.email.toLowerCase())
+          .set({ email: this.state.email.toLowerCase(), userName: this.state.userName, address: this.state.address });
       })
       .then(() => {
         this.props.history.push('/')

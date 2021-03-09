@@ -149,9 +149,10 @@ class Dashboard extends Component {
             });
           });
         if (this._isMounted) {
-          await firebase.firestore().collection('users').doc(_user.email)
-            .onSnapshot(async (res) => {
-              const user = res.data();
+          await firebase.firestore().collection('users')
+            .doc(_user.email)
+            .onSnapshot(async res => {
+              const user = res.data()
               await this.setState({
                 userName: user.userName,
                 address: user.address
