@@ -34,7 +34,7 @@ class Signup extends Component {
               </Form.Group>
 
               <Form.Group id="userName">
-                <FontAwesomeIcon icon={['fas', 'bookmark']} />
+                <FontAwesomeIcon icon={['fas', 'user']} />
                 <Form.Control required type="userName" onChange={(e) => this.userTyping('userName', e)} placeholder="Username"></Form.Control>
               </Form.Group>
 

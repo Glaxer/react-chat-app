@@ -31,7 +31,7 @@ class NewChat extends Component {
               onChange={(e) => this.userTyping('message', e)}
             >
             </Form.Control>
-            <Button type="submit">Submit</Button>
+            <Button type="submit">Send Message</Button>
           </Form>
         </div>
       </section>

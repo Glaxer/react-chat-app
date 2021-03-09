@@ -21,10 +21,11 @@ class ChatList extends Component {
                     }
                   >
                     <div className="list-group-item-avatar">
-                      <img data-holder-rendered="true" src="images/welcome-icon.svg" className="user-img" data-src="holder.js/40x40" alt="40x40" />
-                      {/* <div className="user-avatar">
-                        {_chat.users.filter(_user => _user !== this.props.userEmail)[0].split('')[0]}
-                      </div> */}
+                      <div className="user-avatar">
+                        <span>
+                          {_chat.users.filter(_user => _user !== this.props.userEmail)[0].split('')[0]}
+                        </span>
+                      </div>
                     </div>
 
                     <div className="list-group-item-text">
@@ -53,7 +54,7 @@ class ChatList extends Component {
       )
     } else {
       return (
-        <section>
+        <section className="chat-list">
           <ListGroup></ListGroup>
           <div className="button-wrapper">
             <Button onClick={this.newChat} className="w-50">

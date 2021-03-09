@@ -14,6 +14,7 @@ class Dashboard extends Component {
     this.state = {
       selectedChat: null,
       newChatFormVisible: false,
+      updateProfileVisible: false,
       email: null,
       userName: null,
       chats: []
@@ -25,10 +26,15 @@ class Dashboard extends Component {
       <main>
         <Row>
           <Col xl={3} lg={4} className="right-col">
-            {
-              this.state.newChatFormVisible ? <UpdateProfile></UpdateProfile> : null
-            }
-            <Button style={{ height: "100px" }} className="w-100" >{this.state.email}</Button>
+            <Button style={{ height: "100px" }} className="w-100" onClick={this.updateProfileClicked}>
+              {/* <div className="user-avatar">
+                <span>
+                  {this.state.email}
+                </span>
+              </div> */}
+              {this.state.email}
+              {this.state.userName}
+            </Button>
             <ChatList
               history={this.props.history}
               newChatBtnFn={this.newChatBtnClicked}
@@ -40,6 +46,9 @@ class Dashboard extends Component {
             </ChatList>
           </Col>
           <Col xl={9} lg={8}>
+            {
+              this.state.updateProfileVisible ? <UpdateProfile></UpdateProfile> : null
+            }
             {
               this.state.newChatFormVisible ?
                 null :
@@ -63,11 +72,14 @@ class Dashboard extends Component {
     );
   }
 
+  updateProfileClicked = () => {
+    this.setState({ updateProfileVisible: true, newChatFormVisible: false, selectedChat: null }); 
+  } 
 
   buildDocKey = (friend) => [this.state.email, friend].sort().join(':');
 
   selectChat = async (chatIndex) => {
-    await this.setState({ selectedChat: chatIndex, newChatFormVisible: false });
+    await this.setState({ selectedChat: chatIndex, newChatFormVisible: false, updateProfileVisible: false });
     this.messageRead();
   }
 
@@ -80,12 +92,12 @@ class Dashboard extends Component {
 
   clickedChatWhereNotSender = (chatIndex) => this.state.chats[chatIndex].messages[this.state.chats[chatIndex].messages.length - 1].sender !== this.state.email;
 
-  newChatBtnClicked = () => this.setState({ newChatFormVisible: true, selectedChat: null });
+  newChatBtnClicked = () => this.setState({ newChatFormVisible: true, selectedChat: null, updateProfileVisible: false });
 
   goToChat = async (docKey, msg) => {
     const usersInChat = docKey.split(':');
     const chat = this.state.chats.find(_chat => usersInChat.every(_user => _chat.users.includes(_user)));
-    this.setState({ newChatFormVisible: false });
+    this.setState({ newChatFormVisible: false, updateProfileVisible: false });
     await this.selectChat(this.state.chats.indexOf(chat));
     this.submitMessage(msg);
   }
@@ -100,7 +112,7 @@ class Dashboard extends Component {
         sender: this.state.email
       }]
     });
-    this.setState({ newChatFormVisible: false });
+    this.setState({ newChatFormVisible: false, updateProfileVisible: false });
     this.selectChat(this.state.chats.length - 1);
   }
 
@@ -132,8 +144,8 @@ class Dashboard extends Component {
               chats: chats
             });
           });
-      }
-    })
+        }
+      })
   }
 
 }

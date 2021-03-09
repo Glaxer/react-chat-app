@@ -6,6 +6,7 @@ $theme-colors: (
 
 $purple: #59359a;
 $divider: #d6d6d6;
+$light-blue: #63ccff;
 
 body {
     overflow-x: hidden;
@@ -147,9 +148,26 @@ div.list-group {
     }
 }
 
-.user-img {
+.user-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 70px;
+    width: 70px;
     margin-right: 10px;
+    background-color: $light-blue;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+
+    span {
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 1.5rem;
+        color: white;
+    }
 }
 
 /* --- CHAT VIEW -------------------------- */
@@ -170,6 +188,10 @@ div.list-group {
     overflow-y: scroll;
     padding-right: 20px;
     padding-bottom: 20px;
+
+    &.empty {
+        display: none;
+    }
 }
 
 .message-sent {
@@ -231,22 +253,31 @@ button.send-btn {
     -o-border-radius: 50%;
 }
 
-/* --- NEW CHAT -------------------------- */
+/* --- NEW CHAT & UPDATE PROFILE -------------------------- */
 
-div.new-chat-form {
+div.new-chat-form, div.update-profile {
     h2 {
         text-align: center;
         margin: 20px 0 10px;
     }
 
-    input {
-        margin: 10px auto;
+    form {
         width: 80%;
+        margin: 20px auto;
+    }
+
+    input {
+        margin-bottom: 15px;
         border-radius: 0;
+    }
+
+    label {
+        margin-bottom: 0;
+        font-weight: 500;
+        text-transform: uppercase;
     }
     
     button {
-        margin-left: 10%;    
         border-radius: 0;
         -webkit-border-radius: 0;
         -moz-border-radius: 0;
