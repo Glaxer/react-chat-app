@@ -80,7 +80,6 @@ class NewChat extends Component {
   chatExists = async () => {
     const docKey = this.buildDocKey();
     const chat = await firebase.firestore().collection('chats').doc(docKey).get();
-    console.log(chat.exists);
     return chat.exists;
   }
 

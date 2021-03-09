@@ -10,6 +10,7 @@ class Signup extends Component {
     this.state = {
       email: null,
       userName: null,
+      address: null,
       password: null,
       passwordConformation: null,
       signupError: ''
@@ -35,8 +36,14 @@ class Signup extends Component {
 
               <Form.Group id="userName">
                 <FontAwesomeIcon icon={['fas', 'user']} />
-                <Form.Control required type="userName" onChange={(e) => this.userTyping('userName', e)} placeholder="Username"></Form.Control>
+                <Form.Control required type="text" onChange={(e) => this.userTyping('userName', e)} placeholder="Username"></Form.Control>
               </Form.Group>
+
+              <Form.Group id="address">
+                <FontAwesomeIcon icon={['fas', 'map-marker-alt']} />
+                <Form.Control required type="text" onChange={(e) => this.userTyping('address', e)} placeholder="Address"></Form.Control>
+              </Form.Group>
+
 
               <Form.Group id="password">
                 <FontAwesomeIcon icon={['fas', 'lock-open']} />
@@ -79,6 +86,10 @@ class Signup extends Component {
       case 'userName':
         this.setState({ userName: e.target.value });
         break;
+        
+      case 'address':
+        this.setState({ address: e.target.value });
+        break;
 
       case 'password':
         this.setState({ password: e.target.value });
@@ -108,7 +119,7 @@ class Signup extends Component {
         firebase.firestore()
           .collection('users')
           .doc(this.state.email)
-          .set({ email: this.state.email, userName: this.state.userName, avatar: '' });
+          .set({ email: this.state.email, userName: this.state.userName, address: this.state.address });
       })
       .then(() => {
         this.props.history.push('/')

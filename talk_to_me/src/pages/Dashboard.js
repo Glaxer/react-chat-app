@@ -9,6 +9,8 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 
 class Dashboard extends Component {
+  _isMounted = false;
+
   constructor() {
     super();
     this.state = {
@@ -16,7 +18,6 @@ class Dashboard extends Component {
       newChatFormVisible: false,
       updateProfileVisible: false,
       email: null,
-      userName: null,
       chats: []
     }
   }
@@ -26,13 +27,9 @@ class Dashboard extends Component {
       <main>
         <Row>
           <Col xl={3} lg={4} className="right-col">
-            <Button style={{ height: "100px" }} className="w-100" onClick={this.updateProfileClicked}>
-              {/* <div className="user-avatar">
-                <span>
-                  {this.state.email}
-                </span>
-              </div> */}
-              {this.state.email}
+            <Button style={{ height: "100px" }} className="w-100"
+              onClick={this.updateProfileClicked}
+            >
               {this.state.userName}
             </Button>
             <ChatList
@@ -47,7 +44,12 @@ class Dashboard extends Component {
           </Col>
           <Col xl={9} lg={8}>
             {
-              this.state.updateProfileVisible ? <UpdateProfile></UpdateProfile> : null
+              this.state.updateProfileVisible ?
+                <UpdateProfile
+                  userEmail={this.state.email}
+                  userName={this.state.userName}
+                  userAddress={this.state.address}
+                ></UpdateProfile> : null
             }
             {
               this.state.newChatFormVisible ?
@@ -73,8 +75,8 @@ class Dashboard extends Component {
   }
 
   updateProfileClicked = () => {
-    this.setState({ updateProfileVisible: true, newChatFormVisible: false, selectedChat: null }); 
-  } 
+    this.setState({ updateProfileVisible: true, newChatFormVisible: false, selectedChat: null });
+  }
 
   buildDocKey = (friend) => [this.state.email, friend].sort().join(':');
 
@@ -131,21 +133,38 @@ class Dashboard extends Component {
 
   //Called when the component has successfully been rendered to the DOM
   componentDidMount = () => {
+    this._isMounted = true;
+
     firebase.auth().onAuthStateChanged(async _user => {
       if (!_user) {
         this.props.history.push('/login');
       } else {
         await firebase.firestore().collection('chats')
           .where('users', 'array-contains', _user.email)
-          .onSnapshot(async res => { //call whenever this database document gets updated // res = result
+          .onSnapshot(async res => { //call whenever this database document gets updated 
             const chats = res.docs.map(_doc => _doc.data());
             await this.setState({
               email: _user.email,
               chats: chats
             });
           });
+        if (this._isMounted) {
+          await firebase.firestore().collection('users').doc(_user.email)
+            .onSnapshot(async (res) => {
+              const user = res.data();
+              await this.setState({
+                userName: user.userName,
+                address: user.address
+              });
+            });
         }
-      })
+      }
+    })
+
+  }
+
+  componentWillUnmount = () => {
+    this._isMounted = false;
   }
 
 }
