@@ -16,17 +16,18 @@ class ChatView extends Component {
 
     if (chat === undefined) {
       return (
-        <section id="chatview-content" className="chat-content"></section>
+        <section id="chatview-content" className="chat-content empty"></section>
       )
     } else {
       return (
         <div className="chat-container">
           <div className="chat-header">
             <div className="friend-avatar">
-              <img data-holder-rendered="true" src="images/welcome-icon.svg" className="user-img" data-src="holder.js/40x40" alt="40x40" />
-              {/* <div className="user-avatar">
-                {_chat.users.filter(_user => _user !== this.props.userEmail)[0].split('')[0]}
-              </div> */}
+            <div className="user-avatar">
+              <span>
+                {chat.users.filter(_user => _user !== user)[0].split('')[0]}
+              </span>
+            </div>
             </div>
             <div className="friend-info">
               <h6>{chat.users.filter(_user => _user !== user)}</h6>
