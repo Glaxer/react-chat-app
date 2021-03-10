@@ -152,6 +152,7 @@ class Dashboard extends Component {
           await firebase.firestore().collection('users')
             .doc(_user.email)
             .onSnapshot(async res => {
+              console.log('success')
               const user = res.data()
               await this.setState({
                 userName: user.userName,
